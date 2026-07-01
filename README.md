@@ -1,140 +1,101 @@
-<div align="center">
-
-# 🧠 RepoMind
-
-Hybrid RAG Powered Repository Intelligence Engine
-
-**Analyze, understand, and explore GitHub repositories using Hybrid Retrieval-Augmented Generation (Hybrid RAG) and Local Large Language Models.**
-
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
-[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?style=for-the-badge)](https://ollama.com)
-[![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-00599C?style=for-the-badge)](https://faiss.ai)
-[![BM25](https://img.shields.io/badge/BM25-Lexical%20Search-orange?style=for-the-badge)]()
-[![Hybrid RAG](https://img.shields.io/badge/RAG-Hybrid-success?style=for-the-badge)]()
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-</div>
-
-
 # 🚀 Overview
 
-**RepoMind** is a **Repository Intelligence Engine** that helps developers understand unfamiliar GitHub repositories using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**.
+**RepoMind** is a **Repository Intelligence Engine** that helps developers analyze and understand GitHub repositories using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**.
 
-Instead of relying solely on semantic vector search, RepoMind combines **FAISS semantic retrieval**, **BM25 lexical retrieval**, and **Cross-Encoder reranking** to locate the most relevant code before generating grounded explanations with a locally hosted Large Language Model.
+By combining **FAISS semantic search**, **BM25 lexical retrieval**, and **Cross-Encoder reranking**, RepoMind retrieves the most relevant repository context before generating grounded explanations with a locally hosted Large Language Model.
 
-Unlike cloud-based coding assistants, **all inference runs locally using Ollama**, ensuring that source code never leaves your machine.
+Unlike cloud-based coding assistants, **all inference runs locally using Ollama**, ensuring that your source code never leaves your machine.
 
-Whether you're onboarding to a new project, exploring an open-source repository, or trying to understand an unfamiliar architecture, RepoMind provides repository-aware answers backed by the indexed codebase.
+Whether you're onboarding to a new project, exploring open-source software, or understanding an unfamiliar architecture, RepoMind provides repository-aware answers backed by indexed code.
 
+---
 
 # ✨ Key Highlights
 
 - 🔍 Analyze any public GitHub repository
 - 🧠 Hybrid Retrieval (FAISS + BM25)
-- 🎯 Cross-Encoder Reranking for improved retrieval quality
-- 🤖 Local LLM inference using Ollama and Qwen2.5-Coder
+- 🎯 Cross-Encoder Reranking
+- 🤖 Local LLM inference with Ollama & Qwen2.5-Coder
 - 📂 Intelligent repository parsing and chunking
-- 📊 Repository Explorer and Inspector
+- 📊 Repository Explorer & Inspector
 - ⚡ Repository caching for faster re-analysis
-- 🔒 Fully local and privacy-first (no external AI APIs)
+- 🔒 Fully local and privacy-first
+
+---
 
 # 🎯 Why RepoMind?
 
-Modern software repositories are becoming increasingly large, distributed, and difficult to understand. Developers joining an unfamiliar project often spend hours navigating through dozens of files, tracing function calls, and searching for implementation details before they can confidently make changes.
-
-Traditional code search tools provide only partial solutions:
+Understanding an unfamiliar repository often requires navigating hundreds of files, tracing function calls, and identifying relationships between modules. Traditional tools only solve part of this problem:
 
 | Approach | Limitation |
 |----------|------------|
-| **Keyword Search (grep, GitHub Search)** | Finds exact matches but lacks semantic understanding and struggles when naming conventions differ. |
-| **Semantic Search Only** | Understands intent but may miss exact identifiers, function names, and configuration values. |
-| **Cloud AI Assistants** | Often require uploading proprietary source code to external services, introducing privacy, security, and compliance concerns. |
+| **Keyword Search (grep, GitHub Search)** | Finds exact matches but lacks semantic understanding. |
+| **Semantic Search** | Understands intent but may miss exact identifiers and keywords. |
+| **Cloud AI Assistants** | Often require uploading proprietary code to external services. |
 
-RepoMind addresses these challenges by combining **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** with **fully local inference** to provide repository-aware answers grounded in the indexed source code.
+RepoMind combines **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** with **fully local inference** to provide repository-aware answers grounded in the indexed source code.
 
-Instead of relying on a single retrieval strategy, RepoMind combines multiple retrieval techniques, reranks the retrieved context for relevance, and uses a locally hosted Large Language Model to generate accurate, repository-specific explanations.
+Using **FAISS**, **BM25**, and **Cross-Encoder reranking**, RepoMind retrieves the most relevant context before generating responses with a local LLM, improving answer quality while keeping all processing on your machine.
 
-This approach enables developers to:
+With RepoMind, developers can:
 
 - 🚀 Understand unfamiliar repositories faster
 - 🔍 Locate important functions, classes, and modules
 - 🏗️ Explore project architecture and execution flow
 - 📂 Trace feature implementations across multiple files
-- 🤖 Ask natural language questions about the codebase
+- 🤖 Ask natural language questions about a codebase
 - 🔒 Keep proprietary source code completely local
-
-By combining traditional information retrieval techniques with modern Large Language Models, RepoMind transforms complex repositories into an interactive, searchable knowledge base without compromising privacy.
-
 
 # ✨ Features
 
-RepoMind combines modern information retrieval techniques with local Large Language Models to provide a repository-aware question answering experience.
+RepoMind combines **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** with **local LLM inference** to provide fast, accurate, and privacy-first repository intelligence.
 
+---
 
-## 📂 Repository Analysis
+## 🚀 Core Capabilities
 
 | Feature | Description |
-|----------|-------------|
-| 🔗 GitHub Repository Cloning | Clone and analyze any public GitHub repository directly from its URL. |
-| 📄 Intelligent Code Parsing | Parse Python source files into structured, context-aware chunks for retrieval. |
-| 📊 Repository Statistics | Display repository metrics such as file count, code chunks, and indexing information. |
-| 🗂 Repository Explorer | Browse indexed repository files and understand project organization. |
-| 🔍 Repository Inspector | View repository metadata and analysis summary after indexing. |
-| ⚡ Repository Caching | Cache analyzed repositories to eliminate unnecessary re-indexing and improve performance. |
+|---------|-------------|
+| 🔗 **Repository Analysis** | Clone and analyze any public GitHub repository. |
+| 📄 **Smart Code Parsing** | Parse and chunk source code into searchable units. |
+| 🔍 **Hybrid Retrieval** | Combine FAISS semantic search with BM25 lexical search. |
+| 🎯 **Cross-Encoder Reranking** | Improve retrieval quality before answer generation. |
+| 🤖 **Repository Q&A** | Ask natural language questions about any repository. |
+| 📍 **Grounded Responses** | Generate answers using retrieved repository context. |
 
+---
 
-## 🔎 Hybrid Retrieval Engine
-
-RepoMind uses a multi-stage retrieval pipeline instead of relying on a single search technique.
-
-| Component | Purpose |
-|-----------|---------|
-| 🧠 Semantic Search (FAISS) | Retrieves code based on semantic similarity using vector embeddings. |
-| 🔤 Lexical Search (BM25) | Retrieves code using keyword and identifier matching. |
-| 🔀 Hybrid Retrieval | Combines semantic and lexical search results to maximize retrieval quality. |
-| 🎯 Cross-Encoder Reranking | Reorders retrieved code chunks based on contextual relevance before passing them to the language model. |
-
-
-## 🤖 Repository Intelligence
-
-After retrieval, RepoMind uses a locally hosted LLM to generate repository-aware answers.
-
-| Capability | Description |
-|------------|-------------|
-| 🏗 Project Architecture Analysis | Explain the overall organization of a repository. |
-| 🔄 Execution Flow Tracing | Trace how functions interact across multiple modules. |
-| 📌 Function Discovery | Locate important functions and explain their responsibilities. |
-| 📚 Module Understanding | Summarize the purpose of repository modules and packages. |
-| 🧩 Class Analysis | Identify important classes and describe their relationships. |
-| 💬 Natural Language Question Answering | Ask questions about the repository using plain English. |
-| 📍 Grounded Responses | Every answer is generated from retrieved repository context rather than general knowledge. |
-
-
-## ⚙ AI Pipeline
+## ⚙️ AI Stack
 
 | Component | Technology |
 |-----------|------------|
-| Embedding Model | nomic-embed-text (Ollama) |
-| Large Language Model | Qwen2.5-Coder |
-| Vector Database | FAISS |
-| Lexical Retrieval | BM25 |
-| Reranker | MiniLM Cross Encoder |
-| Runtime | Ollama |
+| **Embedding Model** | nomic-embed-text |
+| **Vector Search** | FAISS |
+| **Lexical Search** | BM25 |
+| **Reranker** | MiniLM Cross Encoder |
+| **LLM** | Qwen2.5-Coder |
+| **Inference Engine** | Ollama |
 
+---
 
-## 🎨 User Experience
+## 💻 User Experience
 
-RepoMind is designed to provide a smooth repository exploration experience.
+- 💬 Interactive repository chat
+- 📂 Repository Explorer & Inspector
+- 📋 Expandable answer history
+- 🔔 Desktop notifications
+- ⚡ Repository caching
+- 📈 Live processing status
 
-| Feature | Description |
-|----------|-------------|
-| 💬 Interactive Chat Interface | Ask repository-specific questions using a conversational interface. |
-| 📋 Expandable Answer History | Review previous conversations without cluttering the interface. |
-| 📁 Retrieved File References | Display source files and line ranges used to generate each answer. |
-| 🔔 Desktop Notifications | Notify users when repository analysis or answer generation is complete. |
-| 📈 Processing Status | Visual indicators for cloning, parsing, indexing, retrieval, and generation stages. |
-| 🌙 Modern Streamlit Interface | Clean, responsive interface optimized for repository analysis. |
+---
+
+## 🔒 Privacy by Design
+
+- ✅ 100% Local Inference
+- ✅ No API Keys Required
+- ✅ No Cloud AI Services
+- ✅ Repository Never Leaves Your Machine
+- ✅ Offline After Model Installation
 
 # 🏗️ System Architecture
 
