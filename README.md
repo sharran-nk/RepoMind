@@ -1,3 +1,20 @@
+<div align="center">
+
+# 🧠 RepoMind
+
+Hybrid RAG Powered Repository Intelligence Engine
+
+**Analyze, understand, and explore GitHub repositories using Hybrid Retrieval-Augmented Generation (Hybrid RAG) and Local Large Language Models.**
+
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?style=for-the-badge)](https://ollama.com)
+[![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-00599C?style=for-the-badge)](https://faiss.ai)
+[![BM25](https://img.shields.io/badge/BM25-Lexical%20Search-orange?style=for-the-badge)]()
+[![Hybrid RAG](https://img.shields.io/badge/RAG-Hybrid-success?style=for-the-badge)]()
+
+</div>
+
 # 🚀 Overview
 
 **RepoMind** is a **Repository Intelligence Engine** that helps developers analyze and understand GitHub repositories using **Hybrid Retrieval-Augmented Generation (Hybrid RAG)**.
