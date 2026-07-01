@@ -555,59 +555,6 @@ Contains Streamlit configuration files controlling the appearance and behavior o
 
 ---
 
-# 🏗️ Architectural Layers
-
-```mermaid
-flowchart TD
-
-UI[Presentation Layer<br/>Streamlit]
-
-CORE[Repository Processing<br/>core]
-
-RET[Hybrid Retrieval<br/>retrieval]
-
-LLM[Answer Generation<br/>llm]
-
-EVAL[Evaluation<br/>evaluation]
-
-UI --> CORE
-CORE --> RET
-RET --> LLM
-LLM --> UI
-RET --> EVAL
-```
-
----
-
-# 🔄 End-to-End Workflow
-
-```mermaid
-flowchart LR
-
-A[GitHub Repository]
-
-A --> B[Repository Parsing]
-
-B --> C[Chunk Generation]
-
-C --> D[Embedding Generation]
-
-D --> E[FAISS Index]
-
-C --> F[BM25 Index]
-
-E --> G[Hybrid Retrieval]
-
-F --> G
-
-G --> H[Cross Encoder]
-
-H --> I[Qwen2.5-Coder]
-
-I --> J[Grounded Repository Answer]
-```
-
----
 
 # 🎯 Design Principles
 
