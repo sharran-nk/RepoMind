@@ -270,43 +270,6 @@ D-->E[Best Repository Context]
 E-->F[Local LLM]
 ```
 
-
-
-## Design Principles
-
-RepoMind was designed around several core engineering principles:
-
-### 🎯 Retrieval Before Generation
-
-The language model only receives context retrieved from the indexed repository, reducing hallucinations and encouraging grounded responses.
-
----
-
-### 🔀 Hybrid Retrieval
-
-Combining semantic and lexical retrieval captures both conceptual similarity and exact identifier matches, improving retrieval quality over either approach alone.
-
----
-
-### 📈 Multi-Stage Ranking
-
-A Cross-Encoder reranks retrieved code chunks to prioritize the most contextually relevant information before answer generation.
-
----
-
-### 🔒 Local-First Architecture
-
-All inference runs locally using Ollama, ensuring repository contents remain private and eliminating dependency on external AI services.
-
----
-
-### ⚡ Efficient Repository Processing
-
-Repositories are parsed, embedded, indexed, and cached after analysis, enabling significantly faster subsequent interactions with the same repository.
-
----
-
-
 ## Why This Architecture?
 
 This architecture combines the strengths of traditional information retrieval with modern language models.
@@ -350,3 +313,32 @@ RepoMind/
 | **evaluation/** | Evaluation scripts and benchmarking utilities. |
 | **assets/** | Screenshots and documentation resources. |
 | **.streamlit/** | Streamlit configuration and application settings. |
+
+
+# 🚀 Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/sharran-nk/RepoMind.git
+cd RepoMind
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Pull Ollama models
+ollama pull nomic-embed-text
+ollama pull qwen2.5-coder
+
+# 4. Start Ollama
+ollama serve
+
+# 5. Launch RepoMind
+streamlit run streamlit_app.py
+```
+
+Once the application starts:
+
+1. Paste a GitHub repository URL.
+2. Click **Analyze Repository**.
+3. Wait for indexing to complete.
+4. Ask natural language questions about the repository.
