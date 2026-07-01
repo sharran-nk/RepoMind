@@ -67,49 +67,6 @@ This approach enables developers to:
 By combining traditional information retrieval techniques with modern Large Language Models, RepoMind transforms complex repositories into an interactive, searchable knowledge base without compromising privacy.
 
 
-
-# ⚡ Why Hybrid RAG?
-
-Most Retrieval-Augmented Generation systems rely on **either semantic vector search or keyword search**. Each approach has strengths, but each also has significant limitations when applied to source code.
-
-RepoMind combines both approaches through **Hybrid Retrieval**.
-
-| Retrieval Strategy | Strengths | Limitations |
-|-------------------|-----------|-------------|
-| **BM25 Lexical Search** | Excellent for exact identifiers, function names, variables, error messages, and configuration keys. | Cannot understand semantic similarity or developer intent. |
-| **FAISS Semantic Search** | Retrieves conceptually similar code even when terminology differs. | May overlook exact identifiers or repository-specific naming conventions. |
-| **Hybrid Retrieval (RepoMind)** | Combines lexical precision with semantic understanding to maximize retrieval quality. | Higher computational cost, but significantly better retrieval performance. |
-
-After retrieval, RepoMind applies a **Cross-Encoder Reranker** to evaluate the semantic relevance of the candidate chunks and reorder them before passing the most relevant context to the language model.
-
-This multi-stage retrieval pipeline helps reduce irrelevant context and improves the quality of generated answers.
-
-
-# 🔒 Why Local Inference?
-
-RepoMind is designed with a **local-first architecture**.
-
-Instead of sending repository contents to external AI services, inference is performed locally using **Ollama** and **Qwen2.5-Coder**.
-
-This provides several practical advantages:
-
-### Privacy
-
-Source code never leaves the developer's machine, making RepoMind suitable for proprietary or confidential repositories.
-
-### No API Costs
-
-Once the required models are downloaded locally, there are no per-request charges or token limits.
-
-### Offline Usage
-
-RepoMind continues to function without an internet connection after the required models have been installed.
-
-### Reproducibility
-
-The project uses locally managed models, ensuring consistent behavior across development environments without unexpected cloud model updates.
-
-
 # ✨ Features
 
 RepoMind combines modern information retrieval techniques with local Large Language Models to provide a repository-aware question answering experience.
@@ -313,24 +270,7 @@ D-->E[Best Repository Context]
 E-->F[Local LLM]
 ```
 
----
 
-## Component Overview
-
-| Component | Responsibility |
-|-----------|----------------|
-| **Repository Loader** | Clones and prepares GitHub repositories for analysis. |
-| **Repository Parser** | Parses supported source files into structured code chunks. |
-| **Embedding Generator** | Generates dense vector embeddings using `nomic-embed-text`. |
-| **FAISS** | Performs semantic similarity search across indexed code chunks. |
-| **BM25** | Performs lexical keyword-based retrieval for identifiers and exact matches. |
-| **Hybrid Retrieval** | Combines semantic and lexical search results into a unified candidate set. |
-| **Cross-Encoder Reranker** | Scores retrieved chunks based on contextual relevance and selects the best matches. |
-| **Prompt Builder** | Constructs a repository-grounded prompt using the highest-ranked chunks. |
-| **Qwen2.5-Coder** | Generates repository-aware answers using only the retrieved context. |
-| **Streamlit UI** | Provides an interactive interface for repository analysis and question answering. |
-
----
 
 ## Design Principles
 
@@ -366,40 +306,6 @@ Repositories are parsed, embedded, indexed, and cached after analysis, enabling 
 
 ---
 
-## End-to-End Workflow
-
-```mermaid
-sequenceDiagram
-
-participant User
-participant Streamlit
-participant Parser
-participant Retriever
-participant Reranker
-participant Ollama
-
-User->>Streamlit: Submit GitHub Repository
-
-Streamlit->>Parser: Clone & Parse Repository
-
-Parser->>Retriever: Build FAISS + BM25 Index
-
-Retriever-->>Streamlit: Repository Ready
-
-User->>Streamlit: Ask Repository Question
-
-Streamlit->>Retriever: Hybrid Retrieval
-
-Retriever->>Reranker: Candidate Chunks
-
-Reranker->>Ollama: Top Relevant Context
-
-Ollama-->>Streamlit: Grounded Answer
-
-Streamlit-->>User: Display Repository Answer
-```
-
----
 
 ## Why This Architecture?
 
@@ -412,178 +318,35 @@ This architecture combines the strengths of traditional information retrieval wi
 - **Local LLM Inference** ensures privacy and eliminates recurring API costs.
 
 The result is a repository intelligence workflow capable of producing accurate, repository-aware responses while keeping all processing on the developer's machine.
-
 # 📂 Project Structure
 
-RepoMind follows a modular architecture that separates repository analysis, retrieval, language model inference, evaluation, and the user interface into independent components. This organization keeps the project maintainable while making it easy to extend with additional retrieval methods or language models.
+RepoMind is organized into modular components that separate repository processing, retrieval, language model inference, evaluation, and the user interface.
 
 ```text
 RepoMind/
 │
-├── app.py                     # Streamlit application entry point
-├── requirements.txt           # Project dependencies
-├── README.md                  # Project documentation
+├── app.py
+├── README.md
+├── requirements.txt
 ├── LICENSE
 ├── .gitignore
 │
-├── .streamlit/                # Streamlit configuration
-│
-├── assets/                    # Images and documentation assets
-│
-├── core/                      # Repository parsing and indexing
-│
-├── retrieval/                 # Hybrid Retrieval Engine
-│
-├── llm/                       # Local LLM integration
-│
-├── evaluation/                # Retrieval and answer evaluation
-│
-├── cache/                     # Cached repository indexes
-│
-└── scratch/                   # Experimental utilities and prototypes
+├── assets/          # Documentation assets
+├── core/            # Repository parsing & indexing
+├── retrieval/       # Hybrid Retrieval (FAISS + BM25)
+├── llm/             # Local LLM integration
+├── evaluation/      # Evaluation utilities
+└── .streamlit/      # Streamlit configuration
 ```
 
----
+## 📦 Directory Overview
 
-# 📦 Directory Overview
-
-## 🖥️ `app.py`
-
-The main entry point of RepoMind.
-
-Responsibilities include:
-
-- Launching the Streamlit interface
-- Managing session state
-- Repository selection
-- User interaction
-- Displaying repository insights
-- Presenting generated answers
-
----
-
-## 📂 `core/`
-
-The core processing layer responsible for preparing repositories for retrieval.
-
-Typical responsibilities include:
-
-- Cloning GitHub repositories
-- Repository parsing
-- Intelligent code chunking
-- Metadata extraction
-- Repository indexing
-- Cache management
-
-This module transforms raw repositories into searchable knowledge.
-
----
-
-## 🔎 `retrieval/`
-
-Implements RepoMind's Hybrid Retrieval pipeline.
-
-Responsibilities:
-
-- Generate semantic embeddings
-- Build FAISS vector indexes
-- Build BM25 lexical indexes
-- Perform Hybrid Retrieval
-- Merge retrieval results
-- Cross-Encoder reranking
-- Return the highest-quality repository context
-
-This is the heart of RepoMind's search engine.
-
----
-
-## 🤖 `llm/`
-
-Responsible for repository-aware answer generation.
-
-Responsibilities:
-
-- Prompt construction
-- Context formatting
-- Ollama integration
-- Qwen2.5-Coder inference
-- Response formatting
-
-The language model never searches the repository directly—it only reasons over retrieved context.
-
----
-
-## 📊 `evaluation/`
-
-Contains utilities used to evaluate retrieval quality and answer generation.
-
-Examples include:
-
-- Retrieval metrics
-- Response quality analysis
-- Performance benchmarking
-- Experimental evaluation
-
-This module helps measure and improve RepoMind's effectiveness.
-
----
-
-## 💾 `cache/`
-
-Stores processed repository indexes and metadata.
-
-Caching enables RepoMind to:
-
-- Skip repeated repository parsing
-- Reuse generated embeddings
-- Avoid rebuilding FAISS indexes
-- Improve subsequent analysis speed
-
----
-
-## 🧪 `scratch/`
-
-Contains experimental scripts and prototype implementations used during development.
-
-This folder is not required for normal application usage but serves as a workspace for testing new ideas and features.
-
----
-
-## ⚙️ `.streamlit/`
-
-Contains Streamlit configuration files controlling the appearance and behavior of the application.
-
----
-
-
-# 🎯 Design Principles
-
-RepoMind is built around several software engineering principles.
-
-### 🧩 Modular Design
-
-Each major responsibility is isolated into its own module, improving maintainability and readability.
-
----
-
-### 🔀 Hybrid Retrieval
-
-Semantic and lexical retrieval complement one another to maximize retrieval accuracy.
-
----
-
-### 🎯 Retrieval-Grounded Generation
-
-The language model only receives repository context retrieved from indexed source code, reducing hallucinations and improving answer relevance.
-
----
-
-### ⚡ Performance Through Caching
-
-Previously analyzed repositories are cached locally, significantly reducing repeated indexing time.
-
----
-
-### 🔒 Local-First Architecture
-
-Repository analysis, retrieval, and language model inference all execute locally, ensuring privacy and eliminating dependence on external AI services.
+| Directory | Purpose |
+|-----------|---------|
+| **app.py** | Streamlit application entry point and UI orchestration. |
+| **core/** | Repository cloning, parsing, chunking, caching, and indexing. |
+| **retrieval/** | Implements Hybrid Retrieval using FAISS, BM25, and Cross-Encoder reranking. |
+| **llm/** | Handles prompt construction and local LLM inference through Ollama. |
+| **evaluation/** | Evaluation scripts and benchmarking utilities. |
+| **assets/** | Screenshots and documentation resources. |
+| **.streamlit/** | Streamlit configuration and application settings. |
