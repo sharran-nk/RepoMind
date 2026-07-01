@@ -292,26 +292,34 @@ RepoMind/
 | **assets/** | Screenshots and documentation resources. |
 | **.streamlit/** | Streamlit configuration and application settings. |
 
-
-# 🚀 Quick Start
+## 🚀 Quick Start
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/sharran-nk/RepoMind.git
 cd RepoMind
 
-# 2. Install dependencies
+# 2. Create a virtual environment
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
+
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 3. Pull Ollama models
+# 4. Pull the required Ollama models
 ollama pull nomic-embed-text
 ollama pull qwen2.5-coder
 
-# 4. Start Ollama
+# 5. Start the Ollama server
 ollama serve
 
-# 5. Launch RepoMind
-streamlit run streamlit_app.py
+# 6. Launch RepoMind
+streamlit run app.py
 ```
 
 Once the application starts:
