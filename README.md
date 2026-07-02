@@ -40,6 +40,53 @@ Whether you're onboarding to a new project, exploring open-source software, or u
 
 ---
 
+# 🎥 Demo
+
+<p align="center">
+  <img src="assets/demo.gif" alt="RepoMind Demo" width="900">
+</p>
+
+# 📸 Screenshots
+
+## 🏠 Dashboard
+
+<p align="center">
+  <img src="assets/dashboard.png" width="900">
+</p>
+
+---
+
+## 🔍 Repository Analysis
+
+<p align="center">
+  <img src="assets/repository-analysis.png" width="900">
+</p>
+
+---
+
+## 💬 Chat Interface
+
+<p align="center">
+  <img src="assets/chat-interface.png" width="900">
+</p>
+
+---
+
+## 🧠 Repository-Aware Answers
+
+<p align="center">
+  <img src="assets/answer-generation.png" width="900">
+</p>
+
+---
+
+## 📊 Retrieval Report
+
+<p align="center">
+  <img src="assets/retrieval-report.png" width="900">
+</p>
+
+
 # 🎯 Why RepoMind?
 
 Understanding an unfamiliar repository often requires navigating hundreds of files, tracing function calls, and identifying relationships between modules. Traditional tools only solve part of this problem:
