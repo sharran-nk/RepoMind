@@ -319,7 +319,7 @@ ollama pull qwen2.5-coder
 ollama serve
 
 # 6. Launch RepoMind
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 Once the application starts:
