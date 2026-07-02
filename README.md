@@ -29,14 +29,14 @@ Whether you're onboarding to a new project, exploring open-source software, or u
 
 # ✨ Key Highlights
 
-- 🔍 Analyze any public GitHub repository
-- 🧠 Hybrid Retrieval (FAISS + BM25)
-- 🎯 Cross-Encoder Reranking
-- 🤖 Local LLM inference with Ollama & Qwen2.5-Coder
-- 📂 Intelligent repository parsing and chunking
-- 📊 Repository Explorer & Inspector
-- ⚡ Repository caching for faster re-analysis
-- 🔒 Fully local and privacy-first
+-  Analyze any public GitHub repository
+-  Hybrid Retrieval (FAISS + BM25)
+-  Cross-Encoder Reranking
+-  Local LLM inference with Ollama & Qwen2.5-Coder
+-  Intelligent repository parsing and chunking
+-  Repository Explorer & Inspector
+-  Repository caching for faster re-analysis
+-  Fully local and privacy-first
 
 ---
 
@@ -56,12 +56,12 @@ Using **FAISS**, **BM25**, and **Cross-Encoder reranking**, RepoMind retrieves t
 
 With RepoMind, developers can:
 
-- 🚀 Understand unfamiliar repositories faster
-- 🔍 Locate important functions, classes, and modules
-- 🏗️ Explore project architecture and execution flow
-- 📂 Trace feature implementations across multiple files
-- 🤖 Ask natural language questions about a codebase
-- 🔒 Keep proprietary source code completely local
+- Understand unfamiliar repositories faster
+- Locate important functions, classes, and modules
+- Explore project architecture and execution flow
+- Trace feature implementations across multiple files
+- Ask natural language questions about a codebase
+- Keep proprietary source code completely local
 
 # ✨ Features
 
@@ -73,12 +73,12 @@ RepoMind combines **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** with **
 
 | Feature | Description |
 |---------|-------------|
-| 🔗 **Repository Analysis** | Clone and analyze any public GitHub repository. |
-| 📄 **Smart Code Parsing** | Parse and chunk source code into searchable units. |
-| 🔍 **Hybrid Retrieval** | Combine FAISS semantic search with BM25 lexical search. |
-| 🎯 **Cross-Encoder Reranking** | Improve retrieval quality before answer generation. |
-| 🤖 **Repository Q&A** | Ask natural language questions about any repository. |
-| 📍 **Grounded Responses** | Generate answers using retrieved repository context. |
+| **Repository Analysis** | Clone and analyze any public GitHub repository. |
+| **Smart Code Parsing** | Parse and chunk source code into searchable units. |
+| **Hybrid Retrieval** | Combine FAISS semantic search with BM25 lexical search. |
+| **Cross-Encoder Reranking** | Improve retrieval quality before answer generation. |
+| **Repository Q&A** | Ask natural language questions about any repository. |
+| **Grounded Responses** | Generate answers using retrieved repository context. |
 
 ---
 
@@ -97,12 +97,12 @@ RepoMind combines **Hybrid Retrieval-Augmented Generation (Hybrid RAG)** with **
 
 ## 💻 User Experience
 
-- 💬 Interactive repository chat
-- 📂 Repository Explorer & Inspector
-- 📋 Expandable answer history
-- 🔔 Desktop notifications
-- ⚡ Repository caching
-- 📈 Live processing status
+- Interactive repository chat
+- Repository Explorer & Inspector
+- Expandable answer history
+- Desktop notifications
+- Repository caching
+- Live processing status
 
 ---
 
