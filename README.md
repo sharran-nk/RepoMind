@@ -375,3 +375,5 @@ Once the application starts:
 2. Click **Analyze Repository**.
 3. Wait for indexing to complete.
 4. Ask natural language questions about the repository.
+
+------------------------------------------------------------------------------------
